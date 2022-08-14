@@ -10,11 +10,13 @@ namespace R5T.S0042
         static void Main()
         {
             /// Inputs.
-            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0000\source\R5T.F0000.Construction\R5T.F0000.Construction.csproj";
-            var instanceTypeInfo = InstanceTypeInfo.Demonstrations;
+            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.Z0000\source\R5T.Z0000\R5T.Z0000.csproj";
+            var instanceTypeInfo = InstanceTypeInfo.Values;
             var instanceNameStems = new[]
             {
-                "GuidFormatDemonstration",
+                "CharacterSets",
+                //"ProjectProperties",
+                // Note: values names should be plural, not singular.
             };
 
             var namespaceNameOverride =
