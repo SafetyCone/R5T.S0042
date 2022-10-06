@@ -10,13 +10,12 @@ namespace R5T.S0042
         static void Main()
         {
             /// Inputs.
-            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.S0044\source\R5T.S0044\R5T.S0044.csproj";
-            var instanceTypeInfo = InstanceTypeInfo.Functionality;
+            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0042\source\R5T.F0042\R5T.F0042.csproj";
+            var instanceTypeInfo = InstanceTypeInfo.Values;
             var instanceNameStems = new[]
             {
-                "Operations",
-                //"ProjectProperties",
                 // Note: values names should be plural, not singular.
+                "CommitMessages",
             };
 
             var namespaceNameOverride =
@@ -102,6 +101,14 @@ namespace {namespaceName}
 
                 var classTypeName = functionalityNameStem;
 
+                /// <remarks>
+                /// * Use = new ClassTypeName() instead of the "target-typed object creation" feature.
+                ///     That feature is only available as-of C# language version 9.0, and to have a broader reach, .NET Standard 2.1 is used for libraries.
+                ///     Because .NET Standard 2.1 is only C# language version 8.0, to allow .NET Standard 2.1, we have to limit ourselves and refrain from using the "target-typed object creation" feature.
+                /// * Make the Instance static property type the interface type.
+                ///     The "default interface methods" used for functionality have a C# language rule that they are not available from instances of the implementation class type, only instances of the interface type.
+                ///     By typing the static instance as the interface, all the functionality methods are available from the instance (Namespace.ClassTypeName.Functionality() is possible).
+                /// </remarks>
                 var classText =
 $@"
 using System;
@@ -113,7 +120,7 @@ namespace {namespaceName}
 	{{
 		#region Infrastructure
 
-	    public static {classTypeName} Instance {{ get; }} = new();
+	    public static {interfaceTypeName} Instance {{ get; }} = new {classTypeName}();
 
 	    private {classTypeName}()
 	    {{
