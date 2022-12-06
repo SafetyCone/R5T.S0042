@@ -10,13 +10,13 @@ namespace R5T.S0042
         static void Main()
         {
             /// Inputs.
-            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.F0088\source\R5T.F0088\R5T.F0088.csproj";
+            var projectFilePath = @"C:\Code\DEV\Git\GitHub\SafetyCone\R5T.T0153\source\R5T.T0153\R5T.T0153.csproj";
             var instanceTypeInfo = InstanceTypeInfo.Functionality;
             var instanceNameStems = new[]
             {
                 // Note: for values, names should be plural, not singular.
-                "VisualStudioOperator",
-			};
+                "LibraryOperator",
+            };
 
             var namespaceNameOverride =
                 "Not Overridden"
